@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-space-grotesk);
+  --font-mono: var(--font-ibm-plex-mono);
+}
+
+:root {
+  color-scheme: light;
+  --background: #f4f1ea;
+  --surface: #ebe7de;
+  --foreground: #121314;
+  --muted: #5f605d;
+  --line: rgb(18 19 20 / 14%);
+  --accent: #d9472e;
+  --header-height: 4.5rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --background: #0c0d0e;
+    --surface: #151718;
+    --foreground: #f0ede5;
+    --muted: #a3a198;
+    --line: rgb(240 237 229 / 14%);
+    --accent: #ff654d;
+  }
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --background: #0c0d0e;
+  --surface: #151718;
+  --foreground: #f0ede5;
+  --muted: #a3a198;
+  --line: rgb(240 237 229 / 14%);
+  --accent: #ff654d;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  background: var(--background);
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100svh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.signal-grid {
+  background-image:
+    linear-gradient(to right, var(--line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+  background-size: clamp(3rem, 6vw, 6rem) clamp(3rem, 6vw, 6rem);
+  mask-image: linear-gradient(to bottom, black 45%, transparent 100%);
+}
+
+.text-balance { text-wrap: balance; }
