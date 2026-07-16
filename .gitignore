@@ -2,6 +2,8 @@
 .next/
 node_modules/
 out/
+.wrangler/
+.dev.vars*
 coverage/
 output/
 .playwright-cli/
