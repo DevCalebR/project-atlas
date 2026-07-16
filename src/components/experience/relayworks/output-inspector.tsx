@@ -51,7 +51,7 @@ export function OutputInspector() {
         </div>
 
         <div className="min-w-0">
-          <div role="tablist" aria-label="RelayWorks sample outputs" className="flex overflow-x-auto border-b">
+          <div role="tablist" aria-label="RelayWorks sample outputs" className="grid grid-cols-2 border-b sm:flex">
             {tabs.map((tab, index) => {
               const active = tab.id === activeTab;
               return (
@@ -65,7 +65,11 @@ export function OutputInspector() {
                   tabIndex={active ? 0 : -1}
                   onClick={() => setActiveTab(tab.id)}
                   onKeyDown={(event) => handleKeyDown(event, index)}
-                  className={cn("relative min-h-14 shrink-0 px-4 text-xs transition-colors sm:px-5", active ? "text-foreground" : "text-muted hover:text-foreground")}
+                  className={cn(
+                    "relative min-h-14 min-w-0 whitespace-nowrap px-4 text-xs transition-colors sm:shrink-0 sm:px-5",
+                    tab.id === "report" && "col-span-2 sm:col-span-1",
+                    active ? "text-foreground" : "text-muted hover:text-foreground",
+                  )}
                 >
                   {tab.label}
                   {active && <motion.span layoutId="output-tab" className="absolute inset-x-4 bottom-0 h-0.5 bg-accent" />}
