@@ -5,7 +5,7 @@ out/
 .wrangler/
 .dev.vars*
 coverage/
-output/
+output/playwright/
 .playwright-cli/
 *.log
 *.tsbuildinfo
