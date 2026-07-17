@@ -8,7 +8,7 @@ import { experiences } from "@/lib/site";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() { return experiences.filter(({ slug }) => slug !== "relayworks").map(({ slug }) => ({ slug })); }
+export function generateStaticParams() { return experiences.filter(({ slug }) => !["relayworks", "callbackcloser"].includes(slug)).map(({ slug }) => ({ slug })); }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
